@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<JUCERPROJECT id="J8NaBi" name="Metronome" projectType="guiapp" jucerVersion="5.4.4">
+<JUCERPROJECT id="J8NaBi" name="Metronome" projectType="guiapp" jucerVersion="5.4.5">
   <MAINGROUP id="F9OHE5" name="Metronome">
     <GROUP id="{8288E535-027D-C7AF-D1CC-89637F48CCF5}" name="Assets">
       <FILE id="eAxs9B" name="block.wav" compile="0" resource="1" file="Assets/block.wav"/>
@@ -12,6 +12,7 @@
       <FILE id="v6tR5d" name="MainComponent.cpp" compile="1" resource="0"
             file="Source/MainComponent.cpp"/>
       <FILE id="XQTGmg" name="Main.cpp" compile="1" resource="0" file="Source/Main.cpp"/>
+      <FILE id="aOLA6x" name="Visualiser.h" compile="0" resource="0" file="Source/Visualiser.h"/>
     </GROUP>
   </MAINGROUP>
   <EXPORTFORMATS>
@@ -95,7 +96,7 @@
     <MODULE id="juce_opengl" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
   </MODULES>
   <LIVE_SETTINGS>
-    <WINDOWS/>
+    <WINDOWS buildEnabled="1"/>
   </LIVE_SETTINGS>
   <JUCEOPTIONS JUCE_STRICT_REFCOUNTEDPOINTER="1"/>
 </JUCERPROJECT>

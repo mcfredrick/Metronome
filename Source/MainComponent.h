@@ -10,6 +10,7 @@
 
 #include "../JuceLibraryCode/JuceHeader.h"
 #include "Metronome.h"
+#include "Visualiser.h"
 
 //==============================================================================
 /*
@@ -36,7 +37,7 @@ public:
 	void play();
 	void stop();
 
-	void sliderValueChanged(Slider* slider);
+	void sliderValueChanged(Slider* slider) override;
 
 	enum class PlayState
 	{
@@ -55,6 +56,7 @@ private:
 	PlayState mPlayState{ PlayState::Stopped };
 
 	Metronome mMetronome;
+	Visualiser mVisualiser;
 
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (MainComponent)
 };

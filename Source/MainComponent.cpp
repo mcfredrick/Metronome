@@ -32,6 +32,10 @@ MainComponent::MainComponent()
 	mStopButton.onClick = [this]() { stop(); };
 	addAndMakeVisible(mStopButton);
 
+	addAndMakeVisible(mVisualiser);
+	mVisualiser.setColours(Colours::whitesmoke, Colours::midnightblue);
+	mVisualiser.setRepaintRate(240); //set the refresh rate on the visualiser
+
     // Make sure you set the size of the component after
     // you add any child components.
     setSize (300, 200);
@@ -65,6 +69,8 @@ void MainComponent::prepareToPlay (int samplesPerBlockExpected, double sampleRat
 	
 	mMetronome.prepareToPlay(samplesPerBlockExpected, sampleRate);
 
+	mVisualiser.clear();
+
 }
 
 void MainComponent::getNextAudioBlock (const AudioSourceChannelInfo& bufferToFill)
@@ -77,6 +83,8 @@ void MainComponent::getNextAudioBlock (const AudioSourceChannelInfo& bufferToFil
 	else {
 	
 	}
+
+	mVisualiser.pushBuffer(bufferToFill);
 
 }
 
@@ -100,13 +108,18 @@ void MainComponent::paint (Graphics& g)
 void MainComponent::resized()
 {
 	Rectangle<int> bounds = getLocalBounds(); //get the area of the component we're in
+	Rectangle<int> topBox(0, 0, 300, 100);
+	Rectangle<int> bottomBox(0, 100, 300, 100);
 
-	FlexBox flexbox;
+	FlexBox flexbox1;
+	FlexBox flexbox2;
 	
-	flexbox.items.add(FlexItem(100, 100, mBPMSlider));
-	flexbox.items.add(FlexItem(100, 100, mPlayButton));
-	flexbox.items.add(FlexItem(100, 100, mStopButton));
-	flexbox.performLayout(bounds); //layout the items within the local bounds as retreived by getLoclBounds above
+	flexbox1.items.add(FlexItem(300, 100, mVisualiser));
+	flexbox2.items.add(FlexItem(100, 100, mBPMSlider));
+	flexbox2.items.add(FlexItem(100, 100, mPlayButton));
+	flexbox2.items.add(FlexItem(100, 100, mStopButton));
+	flexbox1.performLayout(topBox); //layout the items within the local bounds as retreived by getLoclBounds above
+	flexbox2.performLayout(bottomBox);
 }
 
 void MainComponent::play()
